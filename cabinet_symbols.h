@@ -1,0 +1,4 @@
+#define DOCTOR_NUM 4
+#define PATIENT_NUM 10
+#define GEN_PATIENT_TIME 3
+#define WAIT_LIMIT 10
