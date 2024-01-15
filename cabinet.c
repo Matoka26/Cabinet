@@ -14,8 +14,6 @@ void* createPatient(void* args){
         Task t = {
             // Give next id 
             .patientId = nextId,
-            // Give random consultation time
-            .consultationTime = rand() % WAIT_LIMIT 
         };
         timespec_get(&t.waitBegin, TIME_UTC);
         submitTask(t);

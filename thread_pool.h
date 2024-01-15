@@ -15,8 +15,6 @@ pthread_mutex_t mutexQueue;
 pthread_cond_t condQueue;
 
 
-
-
 int searchDoctorId(unsigned long id){
     for(int i = 0 ; i < DOCTOR_NUM ; i++)
         if(doctorId[i] == id)
@@ -31,14 +29,15 @@ void executeTask(Task* task) {
     double time_spent = (waitEnd.tv_sec - task->waitBegin.tv_sec)
                         + (waitEnd.tv_nsec - task->waitBegin.tv_nsec)/ 1000000000.0;
 
-    // Sleep for the duration of consultation
-    sleep(task->consultationTime);
+    // Sleep for the duration of the consultation
+    int consultationTime = rand() % WAIT_LIMIT;
+    sleep(consultationTime);
 
     printf("Im patient %d, Consulted by doctor %d, I've waited %d, Consultation took %d !\n",
             task->patientId, 
             searchDoctorId(pthread_self()),
             (int)time_spent,
-            task->consultationTime);
+            consultationTime);
 
     }
 
